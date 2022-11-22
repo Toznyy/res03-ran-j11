@@ -22,6 +22,7 @@ let formOK=true;
 
 form.addEventListener("submit", function(event){
     event.preventDefault();
+    
     if (usernameInput.value !== ""){
         console.log("cet input est ok ")}
     else {
@@ -30,28 +31,35 @@ form.addEventListener("submit", function(event){
         inputError.innerHTML="Aucun nom d'utilisateur n'a été saisi.";
         usernameInput.classList.add("error");
         fieldset.appendChild(inputError);
-        formOK=false;
-    }
+        formOK=false;}
+        
     
-    if (emailInput.value !== ""){
-        console.log("cet input est ok ")}
-    else if (emailInput.value.indexOf(@,0)<0) || emailInput.value.indexOf(.,0)<0){
-        let inputError = document.createElement("p");
-        let fieldset = document.querySelector("form:first-of-type > fieldset:nth-of-type(2)");
-        inputError.innerHTML="Un email invalide a été saisi (un email doit avoir au moins un @ et un .).";
-        emailInput.classList.add("error");
-        fieldset.appendChild(inputError);
-        formOK=false;
-    else {
+    if (emailInput.value === ""){
         let inputError = document.createElement("p");
         let fieldset = document.querySelector("form:first-of-type > fieldset:nth-of-type(2)");
         inputError.innerHTML="Aucun email n'a été saisi.";
         emailInput.classList.add("error");
         fieldset.appendChild(inputError);
-        formOK=false;
-    }
+        formOK=false;}
+    else if (emailInput.value.indexOf("@",0) < 0){
+        let inputError = document.createElement("p");
+        let fieldset = document.querySelector("form:first-of-type > fieldset:nth-of-type(2)");
+        inputError.innerHTML="Un email invalide a été saisi (un email doit avoir au moins un @ et un .).";
+        emailInput.classList.add("error");
+        fieldset.appendChild(inputError);
+        formOK=false;}
+    else if (emailInput.value.indexOf(".",0) < 0){
+        let inputError = document.createElement("p");
+        let fieldset = document.querySelector("form:first-of-type > fieldset:nth-of-type(2)");
+        inputError.innerHTML="Un email invalide a été saisi (un email doit avoir au moins un @ et un .).";
+        emailInput.classList.add("error");
+        fieldset.appendChild(inputError);
+        formOK=false;}
+    else {
+        console.log("cet input est ok ")}
     
-        if (passwordInput.value !== ""){
+    
+    if (passwordInput.value !== ""){
         console.log("cet input est ok ")}
     else {
         let inputError = document.createElement("p");
@@ -59,28 +67,24 @@ form.addEventListener("submit", function(event){
         inputError.innerHTML="Aucun mot de passe n'a été saisi.";
         passwordInput.classList.add("error");
         fieldset.appendChild(inputError);
-        formOK=false;
-    }
+        formOK=false;}
     
     if (confirmPasswordInput.value !== ""){
-        console.log("cet input est ok ")}
-    if (
-        let inputError = document.createElement("p");
-        let fieldset = document.querySelector("form:first-of-type > fieldset:nth-of-type(4)");
-        inputError.innerHTML="Les deux mots ne passe ne correspondent pas.";
-        confirmPasswordInput.classList.add("error");
-        fieldset.appendChild(inputError);
-        formOK=false;
-    }
-    else {
         let inputError = document.createElement("p");
         let fieldset = document.querySelector("form:first-of-type > fieldset:nth-of-type(4)");
         inputError.innerHTML="Aucun mot de passe n'a été saisi.";
         confirmPasswordInput.classList.add("error");
         fieldset.appendChild(inputError);
-        formOK=false;
-    }
-
+        formOK=false;}
+    else if (passwordInput.value != confirmPasswordInput.value){
+        let inputError = document.createElement("p");
+        let fieldset = document.querySelector("form:first-of-type > fieldset:nth-of-type(4)");
+        inputError.innerHTML="Les deux mots ne passe ne correspondent pas.";
+        confirmPasswordInput.classList.add("error");
+        fieldset.appendChild(inputError);
+        formOK=false;}
+    else {
+        console.log("cet input est ok ")}
     
     if(form==true){
         event.target.submit()
