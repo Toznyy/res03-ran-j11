@@ -170,3 +170,16 @@ body > footer {
     opacity:1;
 }*/
 
+p {
+    color: #d9022f;
+}
+
+.error {
+    border: 1px solid #d9022f;
+}
+
+body > main section:first-of-type form > fieldset input[type='email'].error, 
+body > main section:first-of-type form > fieldset input[type='text'].error, 
+body > main section:first-of-type form > fieldset input[type='password'].error {
+    border : solid 1px red;
+}
